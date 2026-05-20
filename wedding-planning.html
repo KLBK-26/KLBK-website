@@ -7,7 +7,7 @@
 <meta name="description" content="Luxury but approachable wedding planning and day-of coordination across NSW for 2026 and 2027 couples. Book a relaxed wedding consultation with Kapturing Love by K.">
 <link rel="canonical" href="https://www.kapturinglovebyk.com.au/wedding-planning.html">
 <meta property="og:title" content="Wedding Planning & Day-of Coordination NSW | Kapturing Love by K">
-<meta property="og:description" content="Luxury but approachable wedding planning and day-of coordination across NSW for 2026 and 2027 couples. Book a relaxed wedding consultation with Kapturing Love by K.">
+<meta property="og:description" content="Luxury but approachable wedding planning and day-of coordination across NSW for 2026 and 2027 couples.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.kapturinglovebyk.com.au/wedding-planning.html">
 <meta property="og:image" content="https://www.kapturinglovebyk.com.au/IMG_1226.jpeg">
@@ -17,66 +17,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=3">
 <style>
-  .planning-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 12px;
-    margin-top: 2rem;
-  }
-  .planning-gallery img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
-    border-radius: 4px;
-  }
-  .planning-gallery img.gallery-wide {
-    grid-column: span 2;
-    height: 280px;
-  }
-  @media (max-width: 700px) {
-    .planning-gallery {
-      grid-template-columns: 1fr 1fr;
-    }
-    .planning-gallery img.gallery-wide {
-      grid-column: span 2;
-    }
-  }
+  .planning-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 2rem; }
+  .planning-gallery img { width: 100%; height: 280px; object-fit: cover; display: block; border-radius: 4px; }
+  .planning-gallery img.gallery-wide { grid-column: span 2; height: 280px; }
+  .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  .testimonial-card { background: #faf8f6; border-radius: 8px; padding: 2rem; }
+  .testimonial-card blockquote { margin: 0 0 1rem 0; font-family: 'Lora', serif; font-size: 1rem; line-height: 1.7; color: #333; }
+  .testimonial-card cite { font-size: 0.875rem; color: #888; font-style: normal; }
+  @media (max-width: 700px) { .planning-gallery { grid-template-columns: 1fr 1fr; } .planning-gallery img.gallery-wide { grid-column: span 2; } .testimonial-grid { grid-template-columns: 1fr; } }
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Kapturing Love by K",
-  "url": "https://www.kapturinglovebyk.com.au/",
-  "telephone": "0479123607",
-  "email": "admin@kapturinglovebyk.com.au",
-  "areaServed": ["Tamworth NSW", "Hunter Valley NSW", "Sydney NSW", "Central Coast NSW", "Newcastle NSW", "New South Wales"],
-  "description": "Luxury but approachable wedding planning and day-of coordination across NSW for 2026 and 2027 couples.",
-  "sameAs": [],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Wedding services",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Photography" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Videography" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Planning and Day-of Coordination" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Content Creation" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Wedding Packages" } }
-    ]
-  }
-}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Kapturing Love by K","url":"https://www.kapturinglovebyk.com.au/","telephone":"0479123607","email":"admin@kapturinglovebyk.com.au","areaServed":["Tamworth NSW","Hunter Valley NSW","Sydney NSW","Central Coast NSW","Newcastle NSW","New South Wales"],"description":"Wedding planning and day-of coordination across NSW."}
 </script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" data-header>
   <div class="mobile-bar">
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
-      <span>Menu</span>
-      <i aria-hidden="true"></i>
-    </button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span>Menu</span><i aria-hidden="true"></i></button>
     <a class="mobile-brand" href="index.html">Kapturing Love By K</a>
   </div>
   <nav class="primary-nav" id="site-menu" aria-label="Primary navigation">
@@ -89,7 +47,6 @@
     <a href="contact.html">Contact</a>
   </nav>
 </header>
-
 <main id="main">
 
   <section class="hero hero--planning" aria-labelledby="page-title">
@@ -117,7 +74,6 @@
     </div>
   </section>
 
-  <!-- REAL PHOTO GALLERY -->
   <section class="section">
     <div class="section-inner">
       <div class="section-heading">
@@ -131,6 +87,13 @@
         <img src="IMG_1154-2.jpeg" alt="Wedding day bridal details — perfume and flowers">
         <img src="IMG_1497-2.jpeg" alt="Full wedding reception room setup with white chair covers and burlap sashes">
       </div>
+    </div>
+  </section>
+
+  <section class="section testimonial-band">
+    <div class="section-inner">
+      <blockquote>"Kara was an absolute lifesaver. I am a massive over-thinker and she kept me so calm throughout the entire day. Not a single thing went wrong, and I genuinely believe that's because she was there."</blockquote>
+      <p style="text-align:center; margin-top: 1rem; font-size: 0.95rem; color: #888;">— Maddie &amp; Zac, 2022</p>
     </div>
   </section>
 
@@ -222,14 +185,34 @@
     </div>
   </section>
 
-  <section class="section testimonial-band">
+  <section class="section section-blue">
     <div class="section-inner">
-      <blockquote>"You made us feel completely comfortable and actually able to enjoy every single moment of our wedding day. We didn't have to think about a thing."</blockquote>
-      <p style="text-align:center; margin-top: 1rem; font-size: 0.95rem; color: #888;">— NSW couple, 2025</p>
+      <div class="section-heading">
+        <p class="eyebrow">What couples say</p>
+        <h2>Kind words from real couples.</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <blockquote>"She handled everything behind the scenes so we could just enjoy being married. Worth every cent."</blockquote>
+          <cite>— Renee &amp; Josh, 2025</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Kara went above and beyond from the very first planning call right through to the end of the night. She thought of things we never would have, kept our timeline running smoothly, and made sure our families were where they needed to be. I truly don't know how she does it all!"</blockquote>
+          <cite>— Grace &amp; Oliver, 2024</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"If you are on the fence about a coordinator — just book her. You will not regret it for a single second."</blockquote>
+          <cite>— Brittany &amp; Sam, 2021</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Kara felt less like a vendor and more like a friend who happened to be incredible at her job. Our day was everything we dreamed of, and she is a huge reason why."</blockquote>
+          <cite>— Lily &amp; Ben, 2026</cite>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section section-blue">
+  <section class="section">
     <div class="section-inner split">
       <div>
         <p class="eyebrow">Who this is for</p>
@@ -270,9 +253,7 @@
       </div>
       <form name="planning-consultation" class="enquiry-form" method="POST" data-netlify="true" netlify data-netlify-honeypot="bot-field" action="/thank-you">
         <input type="hidden" name="form-name" value="planning-consultation">
-        <p class="hidden-field">
-          <label>Do not fill this out if you are human: <input name="bot-field"></label>
-        </p>
+        <p class="hidden-field"><label>Do not fill this out if you are human: <input name="bot-field"></label></p>
         <input type="hidden" name="service" value="Wedding Planning">
         <label>Your Name<input name="your-name" type="text" autocomplete="name" required></label>
         <label>Partner's Name<input name="partners-name" type="text" required></label>
@@ -284,14 +265,7 @@
         </div>
         <div class="form-row">
           <label>Guest count estimate
-            <select name="guest-count">
-              <option value="">Select if known</option>
-              <option>Under 40</option>
-              <option>40-80</option>
-              <option>80-120</option>
-              <option>120-180</option>
-              <option>180+</option>
-            </select>
+            <select name="guest-count"><option value="">Select if known</option><option>Under 40</option><option>40-80</option><option>80-120</option><option>120-180</option><option>180+</option></select>
           </label>
           <label>Budget range<input name="budget" type="text" placeholder="Optional"></label>
         </div>
@@ -331,37 +305,13 @@
   </section>
 
 </main>
-
 <footer class="site-footer">
-  <div class="footer-brand">
-    <a href="index.html" aria-label="Kapturing Love By K home">
-      <span class="footer-heart" aria-hidden="true">&#10084;</span>
-      <span>Kapturing<br>Love By K</span>
-    </a>
-  </div>
+  <div class="footer-brand"><a href="index.html" aria-label="Kapturing Love By K home"><span class="footer-heart" aria-hidden="true">&#10084;</span><span>Kapturing<br>Love By K</span></a></div>
   <div class="footer-links">
-    <div>
-      <h2>Explore</h2>
-      <a href="wedding-planning.html">Wedding Planning</a>
-      <a href="custom-packages.html">Custom Packages</a>
-      <a href="photography.html">Wedding Photography</a>
-      <a href="videography.html">Wedding Videography</a>
-      <a href="content-creation.html">Content Creation</a>
-      <a href="engagements.html">Engagements</a>
-      <a href="faq.html">FAQ</a>
-    </div>
-    <div>
-      <h2>Contact</h2>
-      <a href="tel:0479123607">0479123607</a>
-      <a href="mailto:admin@kapturinglovebyk.com.au">admin@kapturinglovebyk.com.au</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="accessibility.html">Accessibility Statement</a>
-      <p>Staff Portal</p>
-      <p>&copy; 2026 K&amp;BD PTY LTD trading as Kapturing Love by K</p>
-    </div>
+    <div><h2>Explore</h2><a href="wedding-planning.html">Wedding Planning</a><a href="custom-packages.html">Custom Packages</a><a href="photography.html">Wedding Photography</a><a href="videography.html">Wedding Videography</a><a href="content-creation.html">Content Creation</a><a href="engagements.html">Engagements</a><a href="faq.html">FAQ</a></div>
+    <div><h2>Contact</h2><a href="tel:0479123607">0479123607</a><a href="mailto:admin@kapturinglovebyk.com.au">admin@kapturinglovebyk.com.au</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility Statement</a><p>Staff Portal</p><p>&copy; 2026 K&amp;BD PTY LTD trading as Kapturing Love by K</p></div>
   </div>
 </footer>
-
 <script src="script.js?v=3"></script>
 </body>
 </html>
