@@ -205,17 +205,23 @@ document.querySelectorAll("[data-require-one]").forEach((group) => {
 
 /* ==========================================
    EXIT INTENT POPUP
+   Desktop: mouse exits toward browser bar
+   Mobile: page becomes hidden (tab close / home screen / app switch)
+   Only shows once per session, min 20s on page
    ========================================== */
 (function () {
   if (window.location.pathname.includes("thank-you")) return;
   if (sessionStorage.getItem("klbk_popup_shown")) return;
 
-  const overlay = document.createElement("div");
+  var pageLoadTime = Date.now();
+  var MIN_TIME_MS = 20000; // 20 seconds before mobile trigger fires
+
+  var overlay = document.createElement("div");
   overlay.className = "exit-popup-overlay";
   overlay.hidden = true;
   document.body.appendChild(overlay);
 
-  const popup = document.createElement("div");
+  var popup = document.createElement("div");
   popup.className = "exit-popup";
   popup.hidden = true;
   popup.setAttribute("role", "dialog");
@@ -224,14 +230,22 @@ document.querySelectorAll("[data-require-one]").forEach((group) => {
   popup.innerHTML = [
     '<button class="exit-popup-close" aria-label="Close">&times;</button>',
     '<p class="eyebrow">Before you go</p>',
-    '<h2 id="exit-popup-title">Not sure where to start?</h2>',
-    '<p>Book a free, no-pressure consultation call with Kara. Chat through your wedding plans and find out how KLBK can support your day.</p>',
-    '<a class="button exit-popup-cta" href="https://calendar.app.google/yAL52dCuaiTCBsJk8" target="_blank" rel="noopener">Book a Free Consultation</a>',
-    '<p class="exit-popup-note">Takes less than a minute to book. No commitment required.</p>'
+    '<h2 id="exit-popup-title">Let's stay in touch.</h2>',
+    '<p>Leave your details and Kara will reach out about availability and next steps — no pressure.</p>',
+    '<form class="exit-popup-form" id="exit-popup-form" novalidate>',
+    '<label>Name <input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>',
+    '<label>Email <input name="email" type="email" autocomplete="email" required placeholder="Your email"></label>',
+    '<label>Phone <input name="phone" type="tel" autocomplete="tel" required placeholder="Your phone number"></label>',
+    '<button type="submit" class="button">Send My Details</button>',
+    '</form>',
+    '<div class="exit-popup-success" hidden>',
+    '<p class="exit-popup-success-msg">&#10084; Thanks! Kara will be in touch soon.</p>',
+    '</div>',
+    '<p class="exit-popup-note">Or <a href="https://calendar.app.google/yAL52dCuaiTCBsJk8" target="_blank" rel="noopener">book a free consultation call</a> directly.</p>'
   ].join("");
   document.body.appendChild(popup);
 
-  let popupShown = false;
+  var popupShown = false;
 
   function showPopup() {
     if (popupShown || sessionStorage.getItem("klbk_popup_shown")) return;
@@ -240,7 +254,7 @@ document.querySelectorAll("[data-require-one]").forEach((group) => {
     popup.hidden = false;
     overlay.hidden = false;
     document.body.style.overflow = "hidden";
-    setTimeout(function() { popup.querySelector(".exit-popup-cta").focus(); }, 120);
+    setTimeout(function () { popup.querySelector("input").focus(); }, 120);
   }
 
   function closePopup() {
@@ -251,23 +265,57 @@ document.querySelectorAll("[data-require-one]").forEach((group) => {
 
   popup.querySelector(".exit-popup-close").addEventListener("click", closePopup);
   overlay.addEventListener("click", closePopup);
-  document.addEventListener("keydown", function(e) {
+  document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && !popup.hidden) closePopup();
+  });
+
+  // Form submission via fetch so page doesn't navigate away
+  popup.querySelector("#exit-popup-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var inputs = form.querySelectorAll("input");
+    var valid = true;
+    inputs.forEach(function (input) {
+      if (!input.checkValidity()) { input.reportValidity(); valid = false; }
+    });
+    if (!valid) return;
+
+    var data = new URLSearchParams({
+      "form-name": "popup-enquiry",
+      name: form.querySelector("[name=name]").value,
+      email: form.querySelector("[name=email]").value,
+      phone: form.querySelector("[name=phone]").value
+    });
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: data.toString()
+    }).then(function () {
+      form.hidden = true;
+      popup.querySelector(".exit-popup-success").hidden = false;
+      // Auto close after 3 seconds
+      setTimeout(closePopup, 3000);
+    }).catch(function () {
+      // Fallback — just close gracefully
+      closePopup();
+    });
   });
 
   // Desktop: mouse exits toward browser bar / close button
   var hasScrolled = false;
-  window.addEventListener("scroll", function() { hasScrolled = true; }, { once: true, passive: true });
-  document.addEventListener("mouseleave", function(e) {
+  window.addEventListener("scroll", function () { hasScrolled = true; }, { once: true, passive: true });
+  document.addEventListener("mouseleave", function (e) {
     if (e.clientY <= 5 && hasScrolled) setTimeout(showPopup, 300);
   });
 
-  // Mobile/tablet: show after 50 seconds
-  var mobileTimer = setTimeout(function() {
-    if (window.matchMedia("(pointer: coarse)").matches) showPopup();
-  }, 50000);
-
-  overlay.addEventListener("click", function() { clearTimeout(mobileTimer); }, { once: true });
+  // Mobile / tablet: fires when user goes to home screen, switches apps, or closes tab
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") {
+      var timeOnPage = Date.now() - pageLoadTime;
+      if (timeOnPage >= MIN_TIME_MS) showPopup();
+    }
+  });
 })();
 
 /* ==========================================
@@ -282,7 +330,7 @@ document.querySelectorAll("[data-require-one]").forEach((group) => {
   banner.setAttribute("aria-label", "Cookie notice");
   banner.innerHTML = [
     '<div class="cookie-banner-inner">',
-    '<p>This site uses <strong>Microsoft Clarity</strong> to record anonymised sessions and understand how visitors use the site. No personal form data is captured. <a href="/privacy.html">Learn more</a></p>',
+    '<p>This site uses cookies to improve your experience. <a href="/privacy.html">Learn more</a></p>',
     '<div class="cookie-banner-actions">',
     '<button class="button cookie-accept">Got it</button>',
     '<button class="button button--secondary cookie-decline">Decline</button>',
