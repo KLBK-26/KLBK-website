@@ -842,6 +842,34 @@ blockquote {
   }
 }
 
+.founder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
+  gap: clamp(34px, 7vw, 72px);
+  align-items: center;
+}
+
+.founder-photo img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+@media (max-width: 1040px) {
+  .founder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-photo img {
+    max-height: 420px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+}
+
 .enquiry-form .checkbox-option {
   display: grid !important;
   grid-template-columns: 24px minmax(0, 1fr) !important;
