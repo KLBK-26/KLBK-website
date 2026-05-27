@@ -230,7 +230,7 @@ document.querySelectorAll("[data-require-one]").forEach((group) => {
   popup.innerHTML = [
     '<button class="exit-popup-close" aria-label="Close">&times;</button>',
     '<p class="eyebrow">Before you go</p>',
-    '<h2 id="exit-popup-title">Let's stay in touch.</h2>',
+    '<h2 id="exit-popup-title">Let&#39;s stay in touch.</h2>',
     '<p>Leave your details and Kara will reach out about availability and next steps — no pressure.</p>',
     '<form class="exit-popup-form" id="exit-popup-form" novalidate>',
     '<label>Name <input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>',
