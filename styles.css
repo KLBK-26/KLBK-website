@@ -1186,3 +1186,24 @@ blockquote {
     gap: 14px;
   }
 }
+
+/* ==========================================
+   BLOG POST PAGES
+   ========================================== */
+.blog-post-hero {
+  padding: 72px 0;
+  background: var(--ink);
+  color: var(--white);
+  text-align: center;
+}
+
+.blog-post-hero .eyebrow {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.blog-post-hero h1 {
+  margin: 16px auto 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 800px;
+}
