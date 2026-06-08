@@ -147,7 +147,7 @@ document.querySelectorAll(".enquiry-form").forEach((form) => {
       dot.classList.toggle("done", i < index);
     });
     currentStep = index;
-    setTimeout(() => form.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50);
+    if (index > 0) { setTimeout(() => form.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50); }
   }
 
   function validateCurrentStep() {
