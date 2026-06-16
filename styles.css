@@ -144,12 +144,13 @@ a {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(90deg, rgba(27, 25, 31, 0.7), rgba(27, 25, 31, 0.4) 48%, rgba(27, 25, 31, 0.12));
+  background: linear-gradient(90deg, rgba(27, 25, 31, 0.72), rgba(27, 25, 31, 0.48));
   content: "";
 }
 
 .hero--home {
   background-image: url("photo-golden-kiss.webp");
+  background-position: 35% center;
 }
 
 .hero--weddings,
